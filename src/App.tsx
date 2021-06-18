@@ -1,26 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import { Route, Switch } from "react-router-dom";
+import Header from "../src/components/Layout/Header";
+import Footer from "../src/components/Layout/Footer";
+import "./App.css";
+import styled from "styled-components";
+import Home from "../src/container/Home";
+import { Provider } from "react-redux";
+import store from "./data/store";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+		<Provider store={store}>
+			<Layout color="white">
+				<Header />
+				<Content>
+					<Switch>
+						<Route exact path="/" component={Home} />
+					</Switch>
+				</Content>
+
+				<Footer />
+			</Layout>
+		</Provider>
+	);
 }
 
 export default App;
+
+const Layout = styled.div`
+	background-color: ${(props) => props.color};
+	min-height: 100vh;
+	font-family: "Rajdhani", sans-serif;
+`;
+
+const Content = styled.div`
+	padding-left: 10rem;
+	min-height: calc(100vh - 120px);
+	padding-right: 10rem;
+	padding-bottom: 3rem;
+	/* margin-bottom: 60px; */
+	background-color: #ededed;
+`;
+
