@@ -1,12 +1,13 @@
 export interface RestaurantState {
 	name: string;
-	people: number;
-	img: string;
+	totalQueue: number;
+	image: string[];
 }
 
 export interface IRestaurantInitial {
 	user: IUser;
 	restaurant: IRestaurant;
+	restaurantList: IRestaurant[];
 }
 
 interface IUser {
@@ -25,5 +26,5 @@ interface IRestaurant {
 	name: string;
 	totalQueue: number;
 	freeQueue?: number;
-	image: string;
+	image: string[];
 }

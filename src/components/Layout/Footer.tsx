@@ -1,17 +1,4 @@
-import styled from "styled-components";
-
-const Foot = styled.div`
-	background-color: ${(props) => props.color};
-	padding: 15px 0px;
-	left: 0%;
-	width: 100%;
-	bottom: 0;
-`;
-
-const MyName = styled.div`
-	text-align: end;
-	margin-right: 20px;
-`;
+import { Foot, MyName } from "../../container/style";
 
 const Footer = () => {
 	return (
