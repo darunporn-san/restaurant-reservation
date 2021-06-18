@@ -20,8 +20,13 @@ export const initialState: RestaurantType.IRestaurantInitial = {
 		freeQueue: 0,
 		image: [],
 	},
+	reservetion:  {
+		name:  "",
+		totalQueue: 0,
+	},
 	restaurantList: [],
 	searchingList: [],
+	modalReservation: false,
 };
 export function RestaurantReducer(
 	state = initialState,
@@ -39,6 +44,12 @@ export function RestaurantReducer(
 				elm.name.includes(action.payload)
 			);
 			return { ...state };
+		case "MODAL_RESERVATION":
+			return { ...state, modalReservation: action.payload };
+		case "RESERVATION":
+			state.reservetion.name = action.payload.name
+			state.reservetion.totalQueue = action.payload.totalQueue
+			return { ...state}
 		default:
 			return state;
 	}

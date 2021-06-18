@@ -7,8 +7,10 @@ export interface RestaurantState {
 export interface IRestaurantInitial {
 	user: IUser;
 	restaurant: IRestaurant;
+	reservetion:  IRestaurant;
 	restaurantList: IRestaurant[];
 	searchingList: IRestaurant[];
+	modalReservation: boolean;
 }
 
 interface IUser {
@@ -27,5 +29,5 @@ interface IRestaurant {
 	name: string;
 	totalQueue: number;
 	freeQueue?: number;
-	image: string[];
+	image?: string[];
 }

@@ -4,20 +4,33 @@ import Header from "../src/components/Layout/Header";
 import Footer from "../src/components/Layout/Footer";
 import "./App.css";
 import styled from "styled-components";
-import Home from "../src/container/Home";
-
+import Home from "./container/Home";
+import Profile from "./container/Profile";
+import Login from "./container/Login";
+import Register from "./container/Register";
+import {
+	useLocation
+  } from "react-router-dom";
 function App() {
+	let location = useLocation();
+	
   return (
+	  <>
 			<Layout color="white">
-				<Header />
+				{/* <Header /> */}
 				<Content>
 					<Switch>
 						<Route exact path="/" component={Home} />
+						<Route exact path="/profile" component={Profile} />
+						<Route exact path="/login" component={Login} />
+						<Route exact path="/register" component={Register} />
+
 					</Switch>
 				</Content>
 
-				<Footer />
+				{/* <Footer /> */}
 			</Layout>
+	</>
 	);
 }
 
@@ -31,7 +44,7 @@ const Layout = styled.div`
 
 const Content = styled.div`
 	padding-left: 10rem;
-	min-height: calc(100vh - 120px);
+	min-height: 100vh; 
 	padding-right: 10rem;
 	padding-bottom: 3rem;
 	background-color: #ededed;

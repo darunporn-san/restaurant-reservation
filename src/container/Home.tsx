@@ -1,24 +1,44 @@
 import * as React from "react";
-import Searching from "../components/home/Search";
 import ListR from "../components/home/ListR";
-import { RestaurantReducer, initialState } from "../data/reducer";
 import { useEffect } from "react";
+import { connect, useDispatch } from "react-redux";
+import { Dispatch } from "redux";
+import RestaurantAction from "./../data/action";
+import Modal from "../components/Modal";
+import Reservation from "./../components/Modal/Reservation";
+import { SearchList, Icon, Input } from "./../container/style";
+
 import data from "../data.json";
-import { connect } from "react-redux";
 
 const Homepage = (props: any) => {
-	console.log("props", props);
+	const dispatch = useDispatch<Dispatch<RestaurantAction.TRestaurantReduce>>();
 
 	useEffect(() => {
-		props.dispatch({
+		dispatch({
 			type: "FETCH_RESTAURANT",
 			payload: data.restaurant,
 		});
 	}, []);
+
 	return (
 		<>
-			<Searching />
+			<SearchList>
+				<Input
+					onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+						dispatch({
+							type: "SEARCHING_NAME",
+							payload: e.target.value,
+						})
+					}
+				/>
+				<Icon>search</Icon>
+			</SearchList>{" "}
 			<ListR data={props.restaurant.searchingList} />
+			<Modal show={props.restaurant.modalReservation} size="modal-md">
+				<div className="modal-content">
+					<Reservation data = {props.restaurant.reservetion}/>
+				</div>
+			</Modal>
 		</>
 	);
 };

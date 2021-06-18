@@ -18,7 +18,7 @@ const ListRestaurant: React.FC<IListRestaurant> = (props) => {
 						</Item>
 					);
 				})}
-			</AllListRes>{" "}
+			</AllListRes>
 		</>
 	);
 };

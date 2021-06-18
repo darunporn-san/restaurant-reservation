@@ -7,31 +7,53 @@ import {
 	PlainText,
 } from "../../container/style";
 import Slider from "react-slick";
+import { useDispatch } from "react-redux";
+import { Dispatch } from "redux";
+import RestaurantAction from "../../data/action";
 
 interface IItemLIst {
 	data: RestaurantState;
 }
 
 const ItemList: React.FC<IItemLIst> = (props) => {
+	const dispatch = useDispatch<Dispatch<RestaurantAction.TRestaurantReduce>>();
+
 	var settings = {
 		dots: true,
 		infinite:true,
 		arrows: false,
 	};
+
+	const booking = (e: any) => {
+		const objData = {
+			name: e.name,
+			totalQueue: e.totalQueue,
+		};
+		dispatch({
+			type: "RESERVATION",
+			payload: objData,
+		});
+		dispatch({
+			type: "MODAL_RESERVATION",
+			payload: true,
+		});
+	};
 	return (
 		<>
 			<ALlDetail>
 				<Slider {...settings}>
-					{
-						props.data.image.map((img:string,i:number)=>(
-							<div key={i}>
-								<img src={img} width="230" alt={props.data.name} style={{margin:'auto'}} />
-							</div>
-						))
-					}
-					
+					{props.data.image.map((img: string, i: number) => (
+						<div key={i}>
+							<img
+								src={img}
+								width="230"
+								alt={props.data.name}
+								style={{ margin: "auto" }}
+							/>
+						</div>
+					))}
 				</Slider>
-				<p style={{paddingTop:'10px'}}>{props.data.name}</p>
+				<p style={{ paddingTop: "10px" }}>{props.data.name}</p>
 
 				<TextDetail>
 					<PlainText>Total Queue</PlainText>
@@ -41,7 +63,7 @@ const ItemList: React.FC<IItemLIst> = (props) => {
 					<PlainText>Free Queue</PlainText>
 					<PlainText>{props.data.totalQueue}</PlainText>
 				</TextDetail>
-				<Button>Booking</Button>
+				<Button onClick={() => booking(props.data)}>Booking</Button>
 			</ALlDetail>
 		</>
 	);

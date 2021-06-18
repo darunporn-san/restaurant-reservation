@@ -5,16 +5,14 @@ import {
 	Avatar,
 } from "../../container/style";
 
-const Header = ({ background }: any) => {
+const Header = () => {
 	return (
-		<>
-			<Head color="#01A9F4">
+			<Head color="rgb(1, 169, 244)">
 				<HomeProfile>Restaurant Reservation</HomeProfile>
 				<ProfileAvatar>
 					<Avatar>DS</Avatar>
 				</ProfileAvatar>
 			</Head>
-		</>
 	);
 };
 export default Header;
