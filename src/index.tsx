@@ -4,11 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom'
+import { createStore } from "redux";
+import { RestaurantReducer } from "./data/reducer";
+import { Provider } from "react-redux";
 
+const store = createStore(RestaurantReducer);
 
 const AppWithRouter = () => (
   <BrowserRouter>
-    <App />
+    <Provider store = {store}>
+      <App />
+    </Provider>
   </BrowserRouter>
 )
 

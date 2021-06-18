@@ -8,6 +8,7 @@ export interface IRestaurantInitial {
 	user: IUser;
 	restaurant: IRestaurant;
 	restaurantList: IRestaurant[];
+	searchingList: IRestaurant[];
 }
 
 interface IUser {

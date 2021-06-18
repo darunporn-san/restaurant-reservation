@@ -1,15 +1,16 @@
 import * as React from "react";
 import Searching from "../components/home/Search";
 import ListR from "../components/home/ListR";
-import { RestaurantReducer, initialState } from "./../data/store";
+import { RestaurantReducer, initialState } from "../data/reducer";
 import { useEffect } from "react";
 import data from "../data.json";
+import { connect } from "react-redux";
 
-const Homepage = () => {
-	const [state, dispatch] = React.useReducer(RestaurantReducer, initialState);	
+const Homepage = (props: any) => {
+	console.log("props", props);
 
 	useEffect(() => {
-		dispatch({
+		props.dispatch({
 			type: "FETCH_RESTAURANT",
 			payload: data.restaurant,
 		});
@@ -17,8 +18,14 @@ const Homepage = () => {
 	return (
 		<>
 			<Searching />
-			<ListR data={state.restaurantList} />
+			<ListR data={props.restaurant.searchingList} />
 		</>
 	);
 };
-export default Homepage;
+
+const mapStateToProps = (state: any) => {
+	return {
+		restaurant: state,
+	};
+};
+export default connect(mapStateToProps)(Homepage);
