@@ -13,11 +13,7 @@ import {
   } from "react-router-dom";
 function App() {
 	let location = useLocation();
-	console.log('location',location.pathname);
-	React.useEffect(()=>{
 
-	},[])
-	
   return (
 	  <>
 			<Layout color="white">

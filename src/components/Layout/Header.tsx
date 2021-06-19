@@ -9,16 +9,21 @@ interface IHeader {
 	noHead: boolean;
 }
 const Header: React.FC<IHeader> = (props) => {
+	console.log(props);
+	
 	return (
-		<div style={{display:props.noHead?"none":"block"}}>
+		<div style={{ display: props.noHead ? "none" : "block" }}>
 			<Head color="rgb(1, 169, 244)">
-				<HomeProfile>Restaurant Reservation</HomeProfile>
-				<ProfileAvatar>
-					<Avatar>DS</Avatar>
-				</ProfileAvatar>
+				<a href="/">
+					<HomeProfile>Restaurant Reservation</HomeProfile>
+				</a>
+				<a href="/profile" style={{textDecoration:'none'}}>
+					<ProfileAvatar>
+						<Avatar>DS</Avatar>
+					</ProfileAvatar>
+				</a>
 			</Head>
 		</div>
-		
 	);
 };
 export default Header;

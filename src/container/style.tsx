@@ -111,6 +111,51 @@ export const SearchList = styled.div`
 	position: relative;
 `;
 
+export const ProfileText = styled.div`
+	margin: 50px 100px;
+`;
+export const LayoutProfile = styled.div`
+	padding-top: 50px;
+	/* background-color: red; */
+`;
+export const Profiles = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	/* background-color: gainsboro; */
+	width: 70%;
+	margin: auto;
+`;
+export const AvatarProfile = styled.div`
+	background-color: green;
+	width: 12vw;
+	z-index: 1;
+	border-radius: 100px;
+	height: 12vw;
+`;
+export const ProfileDetails = styled.div`
+	background-color: yellow;
+	border-radius: 50px;
+	width: 100%;
+	/* transform: translateY(-100px); */
+`;
+
+export const HistoryBlock = styled.div`
+	background-color: blueviolet;
+	height: 150px;
+	border-radius: 30px;
+	max-height: 1000px;
+	overflow-y: auto;
+`;
+
+export const UserName = styled.p`
+	font-size: 3vw;
+`;
+
+export const Name = styled.p`
+	font-size: 2vw;
+`;
+
 export const Icon = styled.span.attrs((props) => ({
 	className: "material-icons",
 }))`
@@ -127,6 +172,8 @@ export const Icon = styled.span.attrs((props) => ({
 	font-size: 1.2em;
 	transition: all 1s;
 `;
+
+
 
 export const Input = styled.input.attrs((props) => ({
 	type: "text",
@@ -145,3 +192,7 @@ export const Input = styled.input.attrs((props) => ({
 	border-radius: 50px;
 	padding: 0 20px;
 `;
+
+
+
+ 
