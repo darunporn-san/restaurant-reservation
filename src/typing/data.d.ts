@@ -21,13 +21,17 @@ interface IUser {
 
 interface IHistory {
 	restaurantName: string;
-	date: string;
-	time: string;
-	people: number;
+	date?: string;
+	time?: string;
+	people?: number;
 }
 interface IRestaurant {
 	name: string;
-	totalQueue: number;
+	totalQueue?: number;
 	freeQueue?: number;
 	image?: string[];
+	people?: number;
+	date?:  string;
+	time?:  string
+	dateTime?: Date | null 
 }

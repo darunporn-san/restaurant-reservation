@@ -28,6 +28,7 @@ const ItemList: React.FC<IItemLIst> = (props) => {
 		const objData = {
 			name: e.name,
 			totalQueue: e.totalQueue,
+			freeQueue: e.freeQueue,
 		};
 		dispatch({
 			type: "RESERVATION",

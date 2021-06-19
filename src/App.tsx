@@ -13,11 +13,15 @@ import {
   } from "react-router-dom";
 function App() {
 	let location = useLocation();
+	console.log('location',location.pathname);
+	React.useEffect(()=>{
+
+	},[])
 	
   return (
 	  <>
 			<Layout color="white">
-				{/* <Header /> */}
+				<Header noHead = {location.pathname === '/' || location.pathname === '/profile'?false:true}/>
 				<Content>
 					<Switch>
 						<Route exact path="/" component={Home} />
@@ -28,7 +32,7 @@ function App() {
 					</Switch>
 				</Content>
 
-				{/* <Footer /> */}
+				<Footer noFooter = {location.pathname === '/' || location.pathname === '/profile'?false:true}/>
 			</Layout>
 	</>
 	);

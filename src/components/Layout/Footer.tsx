@@ -1,11 +1,17 @@
 import { Foot, MyName } from "../../container/style";
 
-const Footer = () => {
+interface IFooter {
+	noFooter: boolean;
+}
+const Footer: React.FC<IFooter> = (props) => {
 	return (
 		<>
+				<div style={{display:props.noFooter?"none":"block"}}>
+
 			<Foot color="#01A9F4">
 				<MyName>Darunporn Santisawaddiwong</MyName>
 			</Foot>
+			</div>
 		</>
 	);
 };
