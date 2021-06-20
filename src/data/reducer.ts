@@ -91,6 +91,14 @@ export function RestaurantReducer(
 				dateTime: null,
 			};
 			return { ...state };
+		case "CANCEL_RESTAURANT":
+			const filterRes = _.filter(
+				state.user.history,
+				(elm) => elm.restaurantName !== action.payload.restaurantName
+			);
+			console.log("filterRes", filterRes);
+			state.user.history = filterRes;
+			return { ...state };
 		default:
 			return state;
 	}

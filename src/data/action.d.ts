@@ -9,6 +9,7 @@ export const INPUT_PEOPLE = "INPUT_PEOPLE";
 export const INPUT_DATETIME = "INPUT_DATETIME";
 export const SAVE_RESERVATION = "SAVE_RESERVATION";
 export const RESET_RESERVATION = "RESET_RESERVATION";
+export const CANCEL_RESTAURANT = "CANCEL_RESTAURANT";
 export interface DataRestaurant {
 	type: typeof SET_RESTAURANT;
 	payload: ActionType.IRestaurant[];
@@ -24,6 +25,10 @@ export interface SetBoolean {
 	payload: boolean;
 }
 
+export interface CancelBooking {
+	type: typeof CANCEL_RESTAURANT;
+	payload: ActionType.IHistory;
+}
 export interface Reservation {
 	type: typeof RESERVATION;
 	payload: ActionType.IRestaurant;
@@ -42,4 +47,5 @@ export type TRestaurantReduce =
 	| SearchingName
 	| SetBoolean
 	| Reservation
-	| SetUndefined;
+	| SetUndefined
+	| CancelBooking;
