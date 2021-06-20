@@ -2,6 +2,7 @@ export interface RestaurantState {
 	name: string;
 	totalQueue: number;
 	image: string[];
+	freeQueue: number;
 }
 
 export interface IRestaurantInitial {

@@ -54,7 +54,11 @@ const ItemList: React.FC<IItemLIst> = (props) => {
 						</div>
 					))}
 				</Slider>
-				<p style={{ paddingTop: "10px" }}>{props.data.name}</p>
+				<p className="mt-4">
+					
+					<b>{props.data.name}</b>
+				
+				</p>
 
 				<TextDetail>
 					<PlainText>Total Queue</PlainText>
@@ -62,7 +66,7 @@ const ItemList: React.FC<IItemLIst> = (props) => {
 				</TextDetail>
 				<TextDetail>
 					<PlainText>Free Queue</PlainText>
-					<PlainText>{props.data.totalQueue}</PlainText>
+					<PlainText>{props.data.freeQueue}</PlainText>
 				</TextDetail>
 				<Button onClick={() => booking(props.data)}>Booking</Button>
 			</ALlDetail>

@@ -3,13 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom'
-import { createStore } from "redux";
+import { BrowserRouter } from "react-router-dom";
 import { RestaurantReducer } from "./data/reducer";
 import { Provider } from "react-redux";
 import "bootstrap/dist/css/bootstrap.css";
+import createSagaMiddleware from "redux-saga";
+import { createStore, applyMiddleware } from "redux";
 
-const store = createStore(RestaurantReducer);
+import rootRestaurant from "./data/resturant";
+
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(RestaurantReducer, applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(rootRestaurant);
+
 
 const AppWithRouter = () => (
   <BrowserRouter>

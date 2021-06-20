@@ -2,7 +2,7 @@ import * as React from "react";
 import {
 	ALlDetail,
 	TextDetail,
-	Button,
+	ButtonModal,
 	PlainText,
 } from "../../container/style";
 import { IRestaurant } from "../../typing/data";
@@ -19,26 +19,30 @@ const Confirm: React.FC<IConfirm> = (props) => {
 
 	return (
 		<>
+			<div className="text-center">
+				<h1><b>Confirm</b></h1>
+			</div>
 			<TextDetail>
 				<p>Restaurant</p>
-				<p>{props.data.name}</p>
+				<p><b>{props.data.name}</b></p>
 			</TextDetail>
 			<TextDetail>
 				<p>Date</p>
-				<p>{props.data.date}</p>
+				<p><b>{props.data.date}</b></p>
 			</TextDetail>
 			<TextDetail>
 				<p>Time</p>
-				<p>{props.data.time}</p>
+				<p><b>{props.data.time}</b></p>
 			</TextDetail>
 			<TextDetail>
 				<p>People</p>
-				<p>{props.data.people}</p>
+				<p><b>{props.data.people}</b></p>
 			</TextDetail>
 
 			<TextDetail className="mt-3">
-				<button onClick={(e) => props.changePage("cancel")}>Pervious</button>
-				<button
+				<ButtonModal color= "#b2b2b2" onClick={(e) => props.changePage("cancel")}>Pervious</ButtonModal>
+				<ButtonModal 
+				color= "#57CC99" 
 					onClick={(e) =>
 						dispatch({
 							type: "SAVE_RESERVATION",
@@ -46,7 +50,7 @@ const Confirm: React.FC<IConfirm> = (props) => {
 						})
 					}>
 					Confirm
-				</button>
+				</ButtonModal>
 			</TextDetail>
 		</>
 	);

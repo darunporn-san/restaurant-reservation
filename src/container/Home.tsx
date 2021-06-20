@@ -8,7 +8,6 @@ import Modal from "../components/Modal";
 import Reservation from "./../components/Modal/Reservation";
 import { SearchList, Icon, Input } from "./../container/style";
 import Confirm from "./../components/Modal/Confirm";
-import data from "../data.json";
 
 const Homepage = (props: any) => {
 	const [nextConfirm, setNextConfirm] = useState(false);	
@@ -25,7 +24,7 @@ const Homepage = (props: any) => {
 	useEffect(() => {
 		dispatch({
 			type: "FETCH_RESTAURANT",
-			payload: data.restaurant,
+			payload: undefined,
 		});
 	}, []);
 

@@ -11,7 +11,8 @@ import {
 	ALlDetail,
 	TextDetail,
 	Button,
-	PlainText,
+	ButtonModal,
+	InputText,
 } from "../../container/style";
 
 interface IReservation {
@@ -46,7 +47,7 @@ const Reservation: React.FC<IReservation> = (props) => {
 	}, [props]);
 	return (
 		<>
-			<p className="text-center">{props.data.name}</p>
+			<h1 className="text-center bold ">{props.data.name}</h1>
 			<TextDetail>
 				<p>Name</p>
 				<p>Darunporn</p>
@@ -62,7 +63,8 @@ const Reservation: React.FC<IReservation> = (props) => {
 			<TextDetail>
 				<p>How people to book</p>
 				<p>
-					<input
+					<InputText
+						className="form-control input-radius"
 						type="text"
 						value={props.data.people}
 						onChange={(e) => {
@@ -87,8 +89,9 @@ const Reservation: React.FC<IReservation> = (props) => {
 				<div>Time</div>
 				<div>
 					<DatePicker
+						className="form-control input-radius"
 						selected={props.data.dateTime}
-						onChange={(e:  any) => {
+						onChange={(e: any) => {
 							dispatch({
 								type: "INPUT_DATETIME",
 								payload: e,
@@ -105,10 +108,24 @@ const Reservation: React.FC<IReservation> = (props) => {
 			</TextDetail>
 
 			<TextDetail className="mt-3">
-				<button onClick={cancelQueue}>Cancel</button>
-				<button onClick={(e) => props.changePage("next")}
-					disabled={props.data.people === 0 || props.data.dateTime === null || valueQueue?true:false}
-				>Reserve</button>
+				<ButtonModal color = "#b2b2b2" onClick={cancelQueue}>Cancel</ButtonModal>
+				<ButtonModal color={
+						props.data.people === 0 ||
+						props.data.dateTime === null ||
+						valueQueue
+							? "#b2b2b2"
+							: "#57CC99"
+					}
+					onClick={(e) => props.changePage("next")}
+					disabled={
+						props.data.people === 0 ||
+						props.data.dateTime === null ||
+						valueQueue
+							? true
+							: false
+					}>
+					Reserve
+				</ButtonModal>
 			</TextDetail>
 		</>
 	);

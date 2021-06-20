@@ -6,8 +6,6 @@ import "./App.css";
 import styled from "styled-components";
 import Home from "./container/Home";
 import Profile from "./container/Profile";
-import Login from "./container/Login";
-import Register from "./container/Register";
 import {
 	useLocation
   } from "react-router-dom";
@@ -15,22 +13,31 @@ function App() {
 	let location = useLocation();
 
   return (
-	  <>
+		<>
 			<Layout color="white">
-				<Header noHead = {location.pathname === '/' || location.pathname === '/profile'?false:true}/>
+				<Header
+					noHead={
+						location.pathname === "/" || location.pathname === "/profile"
+							? false
+							: true
+					}
+				/>
 				<Content>
 					<Switch>
 						<Route exact path="/" component={Home} />
 						<Route exact path="/profile" component={Profile} />
-						<Route exact path="/login" component={Login} />
-						<Route exact path="/register" component={Register} />
-
 					</Switch>
 				</Content>
 
-				<Footer noFooter = {location.pathname === '/' || location.pathname === '/profile'?false:true}/>
+				<Footer
+					noFooter={
+						location.pathname === "/" || location.pathname === "/profile"
+							? false
+							: true
+					}
+				/>
 			</Layout>
-	</>
+		</>
 	);
 }
 

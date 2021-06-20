@@ -7,12 +7,12 @@ import {
 	AvatarProfile,
 	HistoryBlock,
 	UserName,
-	Name
+	Name,
+	TextDetails,HistoryText
 } from "./style";
-import { connect, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 
 const ProfileContainer = (props:any) => {
-	console.log('props',props);
 	
 	return (
 		<>
@@ -22,20 +22,28 @@ const ProfileContainer = (props:any) => {
 					<ProfileDetails>
 						<ProfileText>
 							<TextDetail>
-								<AvatarProfile />
+								<AvatarProfile ></AvatarProfile>
 								<div style={{ margin: "auto" }}>
-									<UserName >Username</UserName>
-									<Name>name</Name>
+									<UserName>{props.restaurant.user.username}</UserName>
+									<Name>{props.restaurant.user.name}</Name>
 								</div>
 							</TextDetail>
 						</ProfileText>
 						<div style={{ display: "flex", justifyContent: "center" }}>
 							<hr style={{ width: "80%" }} />
 						</div>
-						<ProfileText>
-							<h3>History</h3>
-							<HistoryBlock></HistoryBlock>
-						</ProfileText>
+						<HistoryText>
+							<h3><b>History</b></h3>
+							{props.restaurant.user.history.map((his:any)=>(
+								<HistoryBlock className="mb-3 px-5 pt-4">
+									<TextDetails >Restaurant Name: <b>{his.restaurantName}</b></TextDetails>
+									<TextDetails>Date: <b>{his.date}</b> </TextDetails>
+									<TextDetails>Time: <b>{his.time}</b></TextDetails>
+									<TextDetails>People: <b>{his.people}</b></TextDetails>
+
+								</HistoryBlock>
+							))}
+						</HistoryText>
 					</ProfileDetails>
 				</Profiles>
 			</LayoutProfile>
@@ -46,7 +54,6 @@ const ProfileContainer = (props:any) => {
 const mapStateToProps = (state: any) => {
 	return {
 		restaurant: state,
-		user: state,
 	};
 };
 export default connect(mapStateToProps)(ProfileContainer);

@@ -2,10 +2,11 @@ import RestaurantType from "../typing/data";
 import RestaurantAction from "./action";
 import moment from "moment";
 import _ from "lodash";
+
 export const initialState: RestaurantType.IRestaurantInitial = {
 	user: {
-		name: "",
-		username: "",
+		name: "Daxxx Saxxxxx",
+		username: "username",
 		history: [],
 	},
 	restaurant: {
@@ -32,7 +33,7 @@ export function RestaurantReducer(
 	action: RestaurantAction.TRestaurantReduce
 ) {
 	switch (action.type) {
-		case "FETCH_RESTAURANT":
+		case "SET_RESTAURANT":
 			return {
 				...state,
 				restaurantList: action.payload,
@@ -54,12 +55,10 @@ export function RestaurantReducer(
 			state.reservetion.people = +action.payload;
 			return { ...state };
 		case "INPUT_DATETIME":
-			console.log('action',moment(new Date(action.payload)).format("L"));
-			
-			state.reservetion.dateTime = new Date(action.payload)
+			state.reservetion.dateTime = new Date(action.payload);
 			state.reservetion.date = moment(new Date(action.payload)).format("L");
 			state.reservetion.time = moment(new Date(action.payload)).format("LT");
-			
+
 			return { ...state };
 		case "SAVE_RESERVATION":
 			const objData = {
@@ -78,7 +77,7 @@ export function RestaurantReducer(
 				date: "",
 				time: "",
 				dateTime: null,
-			}
+			};
 
 			return { ...state };
 		case "RESET_RESERVATION":
