@@ -19,12 +19,12 @@ sagaMiddleware.run(rootRestaurant);
 
 
 const AppWithRouter = () => (
-  <BrowserRouter>
-    <Provider store = {store}>
-      <App />
-    </Provider>
-  </BrowserRouter>
-)
+	<BrowserRouter basename={'/restaurant-reservation'}>
+		<Provider store={store}>
+			<App />
+		</Provider>
+	</BrowserRouter>
+);
 
 ReactDOM.render(<AppWithRouter />, document.getElementById('root'))
 
