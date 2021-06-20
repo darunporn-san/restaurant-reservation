@@ -19,11 +19,14 @@ sagaMiddleware.run(rootRestaurant);
 
 
 const AppWithRouter = () => (
+	<React.StrictMode>
+
 	<HashRouter basename={'/restaurant-reservation'}>
 		<Provider store={store}>
 			<App />
 		</Provider>
 	</HashRouter>
+	</React.StrictMode>
 );
 
 ReactDOM.render(<AppWithRouter />, document.getElementById('root'))
