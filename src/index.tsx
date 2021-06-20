@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { RestaurantReducer } from "./data/reducer";
 import { Provider } from "react-redux";
 import "bootstrap/dist/css/bootstrap.css";
@@ -19,11 +19,11 @@ sagaMiddleware.run(rootRestaurant);
 
 
 const AppWithRouter = () => (
-	<BrowserRouter basename={'/restaurant-reservation'}>
+	<HashRouter basename={'/restaurant-reservation'}>
 		<Provider store={store}>
 			<App />
 		</Provider>
-	</BrowserRouter>
+	</HashRouter>
 );
 
 ReactDOM.render(<AppWithRouter />, document.getElementById('root'))
